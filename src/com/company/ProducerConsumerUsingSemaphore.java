@@ -1,13 +1,9 @@
 package com.company;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.IntStream;
 
 
 public class ProducerConsumerUsingSemaphore {
@@ -32,7 +28,7 @@ public class ProducerConsumerUsingSemaphore {
 
                 for (int i = 1; i < 20; i++) {
                  //   System.out.println("Consuming task");
-                    producerConsumer.consumerTask();
+                    producerConsumer.consumeTask();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -61,7 +57,7 @@ public class ProducerConsumerUsingSemaphore {
             full.release();
         }
 
-        void consumerTask () throws InterruptedException {
+        void consumeTask () throws InterruptedException {
 
             full.acquire();
             lock.lock();
